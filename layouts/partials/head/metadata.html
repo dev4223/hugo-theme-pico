@@ -1,24 +1,34 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name=viewport content="width=device-width, initial-scale=1">
-{{ with .Description }}
-<meta name="description" content="{{ . }}" />
-{{ else }}
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<title>{{ .Site.Title }}{{ if (and (ne .Title .Site.Title) (ne (len .Title) 0)) }} - {{ .Title }} {{ end }}</title>
+	<meta property="og:title" content="{{ .Title | default .Site.Title }}{{ if not .IsHome }} • {{ .Site.Params.TitlePrefix }}{{ end }}" />
+	<meta name="twitter:title" content="{{ .Title | default .Site.Title | truncate 70 }}" />
+	<meta property="og:url" content="{{ .Permalink }}" />
+	{{- with .Description | default .Site.Params.description | default .Summary }}
+    <meta name="description" content="{{ . }}">
+    <meta property="og:description" content="{{ . }}">
+    <meta name="twitter:description" content="{{ . | truncate 200 }}">
+    {{- end }}
+    {{- with .Keywords | default .Site.Params.keywords | default }}
+    <meta name="keywords" content="{{ . }}">
+    {{- end }}
+    {{- with .Site.Params.name }}<meta name="author" content="{{ . }}">{{- end }}
+    {{- if .Params.robots }}
+    <meta name="robots" content="{{ .Params.robots | default "index, follow" }}">
+    {{- else }}
+    <meta name="robots" content="{{ .Site.Params.robots | default "index, follow" }}">
+    {{- end }}
+    <link rel="canonical" href="{{ .Permalink | safeURL }}"/>
 
-{{ with $.Site.Params.description }}
-<meta name="description" content="{{ . }}" />
-{{ end }}
-
-{{ end }}
-<title>
-	{{ .Site.Title }}
-	{{ if (and (ne .Title .Site.Title) (ne (len .Title) 0)) }} - {{ .Title }} {{ end }}
-</title>
-{{ with .OutputFormats.Get "RSS" }}
-<link href="{{ .Permalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
-{{ end }}
-
-{{ with $.Site.Params.favicon }}
-<link rel="icon" href="{{ . | relURL }}">
-{{ else }}
-<link rel="icon" type="image/x-icon" href="{{ "favicon.ico" | relURL }}">
-{{ end }}
+	{{ with .OutputFormats.Get "RSS" }}<link href="{{ .Permalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />{{ end }}
+	
+	{{ "<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->" | safeHTML }}
+	{{ "<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->" | safeHTML }}
+	<!--[if lte IE 8]><script src="js/ie/html5shiv.js"></script><![endif]-->
+	{{ "<!--[if lt IE 9]>" | safeHTML }}
+	<script src="js/ie/html5shiv.js"></script>
+	<script src="js/ie/respond.min.js"></script>
+	{{ "<![endif]-->" | safeHTML }}
+    
+	{{- partial "metadata_custom.html" . }}
