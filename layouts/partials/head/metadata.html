@@ -2,7 +2,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name=viewport content="width=device-width, initial-scale=1">
 	<title>{{ .Site.Title }}{{ if (and (ne .Title .Site.Title) (ne (len .Title) 0)) }} - {{ .Title }} {{ end }}</title>
-	<meta property="og:title" content="{{ .Title | default .Site.Title }}{{ if not .IsHome }} • {{ .Site.Params.TitlePrefix }}{{ end }}" />
+	<meta property="og:title" content="{{ .Title | default .Site.Title }}{{ if (and (ne .Title .Site.Title) (ne (len .Title) 0)) }} - {{ .Title }} {{ end }}" />
 	<meta name="twitter:title" content="{{ .Title | default .Site.Title | truncate 70 }}" />
 	<meta property="og:url" content="{{ .Permalink }}" />
 	{{- with .Description | default .Site.Params.description | default .Summary }}
