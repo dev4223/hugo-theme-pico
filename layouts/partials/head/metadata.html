@@ -15,6 +15,8 @@
     {{- end }}
     {{- with .Params.Banner | default .Site.Params.meta.logopng }}
     <meta property="og:image" content="{{ . | absURL }}" />
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@HolgerKral">
     <meta name="twitter:image:src" content="{{ . | absURL }}">
     {{ end }}
     {{- with .Site.Params.name }}<meta name="author" content="{{ . }}">{{- end }}
