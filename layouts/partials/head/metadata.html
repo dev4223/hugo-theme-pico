@@ -2,7 +2,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name=viewport content="width=device-width, initial-scale=1">
 	<title>{{ .Site.Title }}{{ if (and (ne .Title .Site.Title) (ne (len .Title) 0)) }} - {{ .Title }} {{ end }}</title>
-	<meta property="og:title" content="{{ .Title | default .Site.Title }}{{ if (and (ne .Title .Site.Title) (ne (len .Title) 0)) }} - {{ .Title }} {{ end }}" />
+	<meta property="og:title" content="{{ .Site.Title }}{{ if (and (ne .Title .Site.Title) (ne (len .Title) 0)) }} - {{ .Title }} {{ end }}" />
 	<meta name="twitter:title" content="{{ .Title | default .Site.Title | truncate 70 }}" />
 	<meta property="og:url" content="{{ .Permalink }}" />
 	{{- with .Description | default .Site.Params.description | default .Summary }}
@@ -13,6 +13,10 @@
     {{- with .Keywords | default .Site.Params.keywords | default }}
     <meta name="keywords" content="{{ . }}">
     {{- end }}
+    {{- with .Params.Banner | default .Site.Params.meta.logopng }}
+    <meta property="og:image" content="{{ . | absURL }}" />
+    <meta name="twitter:image:src" content="{{ . | absURL }}">
+    {{ end }}
     {{- with .Site.Params.name }}<meta name="author" content="{{ . }}">{{- end }}
     {{- if .Params.robots }}
     <meta name="robots" content="{{ .Params.robots | default "index, follow" }}">
