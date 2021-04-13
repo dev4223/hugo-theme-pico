@@ -14,9 +14,9 @@
 	{{- partial "dev/size-indicator.html" . -}}
 	{{- partial "header.html" . -}}
 
-	{{ $mainClass := "" }}
+	{{ $mainClass := "mt-24 md:mt-36" }}
 	{{ if .IsHome }}
-	{{ $mainClass = "lg:max-w-5xl xl:max-w-6xl 2xl:max-w-screen-xl" }}
+	{{ $mainClass = "lg:max-w-5xl xl:max-w-6xl 2xl:max-w-screen-xl mt-16 md:mt-24" }}
 	{{ end }}
 
 	<main class="w-full px-4 pt-8 mx-auto md:max-w-4xl overflow-x-hidden md:overflow-visible mb-16 {{ $mainClass }}">
