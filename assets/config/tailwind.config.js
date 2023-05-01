@@ -29,7 +29,7 @@ module.exports = {
 	darkMode: 'class',
 	content: {
 		relative: true,
-		files: ['../../layouts/*.html', '../../layouts/**/*.html']
+		files: ['../../layouts/*.html', '../../layouts/**/*.html','../../../../layouts/*.html', '../../../../layouts/**/*.html']
 	},
 	theme: {
 		inset,
