@@ -1,6 +1,6 @@
 # Use an empty string if you have multiple domain linking to your website
 # This string is used to generate the absolute URL for your assets.
-baseURL = 'https://example.com/'
+#baseURL = 'https://example.com/'
 defaultContentLanguage = 'en'
 # Emoji in markdown files
 enableEmoji = true
@@ -94,7 +94,7 @@ pre = "" # pre is inserted before the translation (icons, image, etc)
 url = "/#contact" 
 weight = 30 
 
-# Syntax highlightning
+# Syntax highlighting
 [markup.highlight]
 guessSyntax = true 
 lineNumbersInTable = true 
@@ -133,3 +133,10 @@ weight = 2
 # languageCode = 'es'
 # languageName = 'Español'
 # weight = 4
+
+# Uncomment the following lines to add a German translation.
+# [languages.de]
+# contentDir = 'content/de'
+# languageCode = 'de'
+# languageName = 'Deutsch'
+# weight = 5

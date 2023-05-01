@@ -85,7 +85,7 @@ hugo server
 Your website is running :smile:, you can start editing content files.
 
 ### Multilingual
-Pico currently ships with support for 4 languages (fr, en, it, es). Contributions for other language translations are welcome.
+Pico currently ships with support for 5 languages (fr, en, it, es, de). Contributions for other language translations are welcome.
 To create a new language translation, add the .toml file to the i18n/ folder. See the existing files for the necessary fields.
 See the [hugo documentation](https://gohugo.io/content-management/multilingual/) for more details.
 
@@ -100,6 +100,8 @@ If you want to contribute to Pico to add a feature or improve the code contact m
 
 ## :stars: Show your support
 Please give a :star: if this project helped you!
+
+[![buy me a coffee](.github/bmc-button.png)](https://www.buymeacoffee.com/negrel)
 
 #### :scroll: License
 MIT © [Alexandre Negrel](https://www.negrel.dev)
